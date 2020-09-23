@@ -1,11 +1,30 @@
 <template>
 <div class='value'>
 <ul>
-    
-    <div v-for="(value, prop) in monster" :key="prop" @ElementData="monster">
-    
+    <div v-for="(value, prop) in monster" :key="prop" @ElementData="monster" @AlimentsData="monster">
+        <template v-if="prop=='elements'" >
+
+        {{ prop }} : <ElementData :elements="value" /> 
+
+        </template>
+
+        <template v-else>
+
         {{ prop }} : {{ value }}
-        
+
+        </template>   
+
+        <template v-if="prop=='aliments'">
+
+            {{ prop }} : <AlimentData :aliments="value" />
+
+        </template>
+
+        <template v-else>
+
+         {{ prop }} : {{ value }}
+
+        </template>   
     </div>
 </ul>    
 </div>    
@@ -15,16 +34,25 @@
 
 <script>
 import ElementData from '@/components/ElementData.vue'
+import AlimentsData from '@/components/AlimentsData.vue'
 
 
     export default {
+        components: {
+
+            ElementData,
+            AlimentsData,
+
+        },
+        
         data() {
             return{
                 
                 // loadMonsters: [this.monsters],
             }
         },
-        computed: {
+       
+       computed: {
             monster() {
                 return this.$store.state.monsters;
             },
@@ -32,7 +60,8 @@ import ElementData from '@/components/ElementData.vue'
         created() {
             this.$store.dispatch('loadMonsters');
         },
-        methode: {
+        
+        methods: {
             monster() {
                 return this.$store.state.monsters;
             },

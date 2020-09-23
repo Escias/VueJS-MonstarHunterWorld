@@ -1,7 +1,7 @@
 <template>
     <ul>
 
-        <span v-for="(value, prop) in elements" :key="prop" >{{ value }}, </span>      
+        <span v-for="(value, prop) in aliments" :key="prop" >{{ value }}, </span>      
 
     </ul>
 </template>
@@ -10,7 +10,7 @@
 
 export default {
     props: {
-            elements: Array,
+            aliments: Array,
         },
     data() {
         return {
