@@ -15,7 +15,7 @@ export default new Vuex.Store({
   },
   
   actions: {
-    loadMonsters({commit}) {
+    loadMonsters({commit}, id) {
       axios.get('https://mhw-db.com/monsters/59').then(result => {
         commit('SAVE_MONSTERS', result.data);
       }).catch(error => {console.log(error)

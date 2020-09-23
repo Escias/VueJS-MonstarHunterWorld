@@ -58,7 +58,7 @@ import AlimentsData from '@/components/AlimentsData.vue'
             },
         },
         created() {
-            this.$store.dispatch('loadMonsters');
+            this.$store.dispatch('loadMonsters', '');
         },
         
         methods: {
