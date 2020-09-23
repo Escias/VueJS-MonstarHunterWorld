@@ -1,16 +1,16 @@
 <template>
   <div>
-    <ApiData/>
+    <MonsterData/>
   </div>
 </template>
 
 <script>
 
-import ApiData from "@/components/ApiData";
+import MonsterData from "@/components/MonsterData";
 
 export default {
   components: {
-    ApiData: ApiData
+    MonsterData: MonsterData
   }
 }
 </script>
