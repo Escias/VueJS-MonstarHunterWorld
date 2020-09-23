@@ -13,11 +13,12 @@ export default new Vuex.Store({
       state.monsters = monsters;
     }
   },
+  
   actions: {
     loadMonsters({commit}) {
-      axios.get('https://mhw-db.com/monsters').then(result => {
+      axios.get('https://mhw-db.com/monsters/1').then(result => {
         commit('SAVE_MONSTERS', result.data);
-      }).catch(error => {
+      }).catch(error => {console.log(error)
         throw new Error(`API ${error}`);
       });
     }
