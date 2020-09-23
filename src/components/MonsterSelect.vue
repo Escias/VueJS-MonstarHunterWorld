@@ -1,9 +1,8 @@
 <template>
     <div>
         <select @change="select" v-model="valueMonster">
-            <option v-for="value in monsterName"> {{ value.name }} </option>
+            <option v-for="(value, index) in monsters" :value="index" :key="index"> {{ value.name }} </option>
         </select>
-        <!--<button @click="select"> Select </button>-->
     </div>
 </template>
 
@@ -12,12 +11,17 @@
         data(){
             return {
                 monsterName: this.$store.state.monsters,
-                valueMonster: ' '
+                valueMonster: Number
             }
+        },
+        computed: {
+          monsters(){
+              return this.$store.state.monsters
+          }
         },
         methods: {
             select(){
-              alert(this.monsterName.indexOf(this.valueMonster));
+                console.log(this.valueMonster);
             },
         }
     }
