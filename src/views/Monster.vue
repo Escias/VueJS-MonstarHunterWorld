@@ -1,12 +1,10 @@
 <template>
     <div>
-        <MonsterSelect/>
         <MonsterData/>
     </div>
 </template>
 
 <script>
-    import MonsterSelect from "../components/MonsterSelect";
     import MonsterData from "../components/MonsterData";
 
     export default {
