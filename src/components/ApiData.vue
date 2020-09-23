@@ -1,24 +1,21 @@
 <template>
   <div>
     <p>
-      {{ dataapi }}
+      {{ this.monsters }}
     </p>
   </div>
 </template>
 
 <script>
-import axios from 'axios'
 
 export default {
-  data(){
-    return{
-      dataapi:'',
+  computed: {
+    monsters() {
+      return this.$store.state.monsters;
     }
   },
-  mounted(){
-    axios
-        .get('https://mhw-db.com/monsters')
-        .then(response => (this.dataapi = response.data))
+  created() {
+    this.$store.dispatch('loadMonsters')
   }
 }
 </script>

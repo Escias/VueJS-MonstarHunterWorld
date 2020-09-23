@@ -1,18 +1,25 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import axios from 'axios'
+import axios from "axios";
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
+    monsters: []
   },
   mutations: {
+    SAVE_MONSTERS(state, monsters) {
+      state.monsters = monsters;
+    }
   },
   actions: {
-    async getMonster ({ commit }) {
-      const monster = await axios.get('https://mhw-db.com/monsters')
-      commit('MONSTER', monster)
+    loadMonsters({commit}) {
+      axios.get('https://mhw-db.com/monsters').then(result => {
+        commit('SAVE_MONSTERS', result.data);
+      }).catch(error => {
+        throw new Error(`API ${error}`);
+      });
     }
   },
   modules: {

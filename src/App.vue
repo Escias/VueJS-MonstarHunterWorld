@@ -13,6 +13,7 @@
 </template>
 
 <script>
+
 export default {
   data(){
     return {
@@ -20,7 +21,7 @@ export default {
         { path: "/", title: 'Home'},
         { path: "/about", title: 'About'},
         { path: "/monster", title: 'Monster'},
-      ]
+      ],
     }
   }
 }
