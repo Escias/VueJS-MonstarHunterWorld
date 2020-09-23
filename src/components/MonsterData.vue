@@ -1,6 +1,6 @@
 <template>
     <div>
-        <p>{{ this.monsters }}</p>
+        <p>{{ monsters }} </p>
     </div>
 </template>
 
@@ -13,9 +13,8 @@
             },
         },
         created() {
-            this.$store.dispatch('loadMonsters');
-        }
-
+            this.$store.dispatch('loadMonsters', '');
+        },
     }
 </script>
 
