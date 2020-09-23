@@ -6,7 +6,7 @@
 
 <script>
     import MonsterData from "../components/MonsterData";
-    
+
     export default {
         components: {
             MonsterData: MonsterData,
