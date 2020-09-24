@@ -18,7 +18,7 @@
       return {
         items: [
           { path: "/", title: 'Home'},
-          { path: "/about", title: 'About'},
+          { path: "/comparator", title: 'Comparator'},
           { path: "/monster", title: 'Monster'},
         ]
       }

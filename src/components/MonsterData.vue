@@ -41,7 +41,7 @@
             }
         },
         computed: {
-            selectMonster(){
+            selectedMonster(){
                 return this.$store.state.selectedMonster
             },
             monsters() {
@@ -78,6 +78,7 @@
                     this.displayFilter = this.tabMonster.rewards
                 }
                 console.log('test')
+                console.log(this.specMonster)
                 console.log(this.displayFilter)
             }
         }
