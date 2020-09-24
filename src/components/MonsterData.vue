@@ -8,12 +8,7 @@
 </template>
 
 <script>
-    import MonsterSelect from "./MonsterSelect";
-
     export default {
-        components: {
-          MonsterSelect: MonsterSelect
-        },
         data(){
             return {
                 valueMonster: Number,
