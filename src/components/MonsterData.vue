@@ -89,11 +89,11 @@ div.comparator div.content {
   min-width: 40%;*/
   min-height: 100px;
   border-style: dashed;
-  min-width: 30%;
+  flex: 1;
 }
 
 div.first {
-  background-color: rgb(219, 104, 104);
+  background-color: rgb(150, 184, 200);
 }
 
 div.column {
@@ -102,7 +102,7 @@ div.column {
 }
 
 div.second {
-  background-color: rgb(150, 184, 200);
+  background-color: rgb(219, 104, 104);
 }
 
 .case{
