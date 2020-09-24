@@ -6,7 +6,7 @@
 
 <script>
 
-import MonsterData from "@/components/MonsterData";
+import MonsterData from "@/components/MonsterData.vue";
 
 export default {
   components: {
