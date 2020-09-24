@@ -1,40 +1,30 @@
 <template>
 <div class='value'>
 <ul>
-    <div v-for="(value, prop) in monster" :key="prop" @ElementData="monster" @AilmentsData="monster" @RewardsData="monster">
+    <div v-for="(value, prop) in monster" :key="prop" @ElementData="monster" @AlimentsData="monster">
         <template v-if="prop=='elements'" >
 
-            {{ prop }} : <ElementData :elements="value" /> 
+        {{ prop }} : <ElementData :elements="value" /> 
 
         </template>
+
         <template v-else>
 
-            {{ prop }} : {{ value }}
+        {{ prop }} : {{ value }}
 
         </template>   
-        <template v-if="prop=='ailments'">
 
-            {{ prop }} : <AilmentsData :ailments="value" />
+        <template v-if="prop=='aliments'">
+
+            {{ prop }} : <AlimentData :aliments="value" />
 
         </template>
+
         <template v-else>
 
-            {{ prop }} : {{ value }}
+         {{ prop }} : {{ value }}
 
-        </template>  
-        <template v-if="prop=='rewards'">
-
-            {{ prop }} : <RewardsData :rewards="value" />
-
-        </template>
-          <template v-else>
-
-            {{ prop }} : {{ value }}
-
-        </template>  
-
-        
-        
+        </template>   
     </div>
 </ul>    
 </div>    
@@ -44,15 +34,14 @@
 
 <script>
 import ElementData from '@/components/ElementData.vue'
-import AilmentsData from '@/components/AilmentsData.vue'
-import RewardsData from '@/components/RewardsData.vue'
+import AlimentsData from '@/components/AlimentsData.vue'
+
 
     export default {
         components: {
 
             ElementData,
-            AilmentsData,
-            RewardsData,
+            AlimentsData,
 
         },
         
