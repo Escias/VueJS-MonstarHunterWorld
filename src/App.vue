@@ -3,8 +3,8 @@
     <div id="nav">
       <template v-for="(item, index) in items">
         <router-link
-                :key="index"
-                :to="item.path"
+            :key="index"
+            :to="item.path"
         >{{ item.title }}</router-link> |
       </template>
     </div>
@@ -13,17 +13,18 @@
 </template>
 
 <script>
-  export default {
-    data(){
-      return {
-        items: [
-          { path: "/", title: 'Home'},
-          { path: "/about", title: 'About'},
-          { path: "/monster", title: 'Monster'},
-        ]
-      }
+
+export default {
+  data(){
+    return {
+      items: [
+        { path: "/", title: 'Home'},
+        { path: "/about", title: 'About'},
+        { path: "/monster", title: 'Monster'},
+      ],
     }
   }
+}
 </script>
 
 <style>

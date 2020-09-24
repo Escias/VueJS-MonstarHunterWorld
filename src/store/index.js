@@ -7,7 +7,9 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     monsters: [],
-    selectedMonster: []
+    selectedMonster: [],
+    selectedFirstMonster: [],
+    selectedSecondMonster: []
   },
   mutations: {
     SAVE_MONSTERS(state, monsters) {
@@ -15,6 +17,12 @@ export default new Vuex.Store({
     },
     SAVE_SELECT_MONSTER(state, selectMonster) {
       state.selectedMonster = selectMonster;
+    },
+    SAVE_FIRST_MONSTER(state, selectMonster) {
+      state.selectedFirstMonster = selectMonster;
+    },
+    SAVE_SECOND_MONSTER(state, selectMonster) {
+      state.selectedSecondMonster = selectMonster;
     }
   },
   actions: {
@@ -25,9 +33,16 @@ export default new Vuex.Store({
         throw new Error(`API ${error}`);
       });
     },
-    selectedMonsters({commit}, id) {
+    selectedFirstMonster({commit}, id) {
       axios.get('https://mhw-db.com/monsters/'+id).then(result => {
-        commit('SAVE_SELECT_MONSTER', result.data);
+        commit('SAVE_FIRST_MONSTER', result.data);
+      }).catch(error => {
+        throw new Error(`API ${error}`);
+      });
+    },
+    selectedSecondMonster({commit}, id) {
+      axios.get('https://mhw-db.com/monsters/'+id).then(result => {
+        commit('SAVE_SECOND_MONSTER', result.data);
       }).catch(error => {
         throw new Error(`API ${error}`);
       });
