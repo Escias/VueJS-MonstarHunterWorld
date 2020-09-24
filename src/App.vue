@@ -21,6 +21,7 @@ export default {
         { path: "/", title: 'Home'},
         { path: "/about", title: 'About'},
         { path: "/monster", title: 'Monster'},
+        { path: "/comparator", title: 'Comparator'},
       ],
     }
   }
