@@ -1,5 +1,6 @@
 <template>
     <div>
+    
     <select @change="selectFirst" v-model="valueFirstMonster">
       <option v-for="(value, index) in monsters" :value="index" :key="index"> {{ value.name }} </option>
     </select>
@@ -13,6 +14,7 @@
           {{ selectedFirstMonster.species }}<br/>
           {{ selectedFirstMonster.type }}<br/>
           {{ selectedFirstMonster.description }}<br/>
+          
         </p>
       </div>
       <div class="column">
@@ -29,6 +31,7 @@
           {{ selectedSecondMonster.species }}<br/>
           {{ selectedSecondMonster.type }}<br/>
           {{ selectedSecondMonster.description }}<br/>
+          
         </p>
       </div>
 
@@ -36,7 +39,11 @@
   </div>
 </template>
 <script>
+
 export default {
+
+    
+
     data(){
     return {
       valueFirstMonster: Number,
