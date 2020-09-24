@@ -1,31 +1,27 @@
 <template>
     <div>
         <select @change="select" v-model="valueMonster">
-            <option selected="All Monsters" :value="0">All monsters</option>
+            <option value="0">Select a monster</option>
             <option v-for="(value, index) in monsters" :value="index+1" :key="index"> {{ value.name }} </option>
         </select><br/>
-        <div class="case">
-            <select @change="handleClick" v-model="specMonster">
+        <div class="filter">
+            <p>Select data to display</p>
+            <select v-model="specMonster">
                 <option v-for="(item) in sMonster" :value="item">{{ item }}</option>
             </select>
         </div>
-        <p>{{ displayFilter }}</p>
+        <button @click="handleClick">Display Data</button>
+        <p class="case">{{ displayFilter }}</p>
     </div>
 </template>
 
 <script>
-    import TypeFilter from "./TypeFilter";
-
     export default {
-        components: {
-            TypeFilter: TypeFilter
-        },
         data(){
             return {
                 valueMonster: 0,
-                specMonster: String,
+                specMonster: 'all',
                 displayFilter: String,
-                tabMonster: this.$store.state.selectedMonster,
                 sMonster: {
                     all: 'all',
                     type: 'type',
@@ -57,29 +53,26 @@
             },
             handleClick(){
                 if (this.specMonster === 'all') {
-                    this.displayFilter = this.tabMonster
+                    this.displayFilter = this.$store.state.selectedMonster
                 }else if (this.specMonster === 'type'){
-                    this.displayFilter = this.tabMonster.type
+                    this.displayFilter = this.$store.state.selectedMonster.type
                 }else if (this.specMonster === 'species'){
-                    this.displayFilter = this.tabMonster.species
+                    this.displayFilter = this.$store.state.selectedMonster.species
                 }else if (this.specMonster === 'description'){
-                    this.displayFilter = this.tabMonster.description
+                    this.displayFilter = this.$store.state.selectedMonster.description
                 }else if (this.specMonster === 'elements'){
-                    this.displayFilter = this.tabMonster.elements
+                    this.displayFilter = this.$store.state.selectedMonster.elements
                 }else if (this.specMonster === 'ailments'){
-                    this.displayFilter = this.tabMonster.ailments
+                    this.displayFilter = this.$store.state.selectedMonster.ailments
                 }else if (this.specMonster === 'location'){
-                    this.displayFilter = this.tabMonster.location
+                    this.displayFilter = this.$store.state.selectedMonster.location
                 }else if (this.specMonster === 'resistances'){
-                    this.displayFilter = this.tabMonster.resistances
+                    this.displayFilter = this.$store.state.selectedMonster.resistances
                 }else if (this.specMonster === 'weaknesses'){
-                    this.displayFilter = this.tabMonster.weaknesses
+                    this.displayFilter = this.$store.state.selectedMonster.weaknesses
                 }else if (this.specMonster === 'rewards'){
-                    this.displayFilter = this.tabMonster.rewards
+                    this.displayFilter = this.$store.state.selectedMonster.rewards
                 }
-                console.log('test')
-                console.log(this.specMonster)
-                console.log(this.displayFilter)
             }
         }
     }
@@ -93,18 +86,11 @@
         margin-top: 1%;
         background-color: lightgrey;
     }
-
-    .check{
-        display: flex;
-        justify-content: space-evenly;
-        align-items: center;
-    }
-
-    .checkbox{
+    .filter{
         display: flex;
         align-items: center;
+        justify-content: center;
     }
-
     span{
         margin-left: 5%;
         margin-right: 5%;
