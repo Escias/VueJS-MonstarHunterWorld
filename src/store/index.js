@@ -46,6 +46,20 @@ export default new Vuex.Store({
       }).catch(error => {
         throw new Error(`API ${error}`);
       });
+    },
+    selectedFirstMonster({commit}, id) {
+      axios.get('https://mhw-db.com/monsters/'+id).then(result => {
+        commit('SAVE_FIRST_MONSTER', result.data);
+      }).catch(error => {
+        throw new Error(`API ${error}`);
+      });
+    },
+    selectedSecondMonster({commit}, id) {
+      axios.get('https://mhw-db.com/monsters/'+id).then(result => {
+        commit('SAVE_SECOND_MONSTER', result.data);
+      }).catch(error => {
+        throw new Error(`API ${error}`);
+      });
     }
   },
   modules: {

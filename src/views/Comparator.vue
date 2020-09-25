@@ -1,18 +1,17 @@
 <template>
   <div>
-    <ComparatorData/>
+    <Comparator/>
   </div>
 </template>
 
 <script>
+  import Comparator from "../components/Comparator";
 
-import ComparatorData from "@/components/ComparatorData.vue";
-
-export default {
-  components: {
-    ComparatorData: ComparatorData
+  export default {
+    components: {
+      Comparator: Comparator
+    }
   }
-}
 </script>
 
 <style scoped>
