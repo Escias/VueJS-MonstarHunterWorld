@@ -1,12 +1,30 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+      <template v-for="(item, index) in items">
+        <router-link
+                :key="index"
+                :to="item.path"
+        >{{ item.title }}</router-link> |
+      </template>
     </div>
     <router-view/>
   </div>
 </template>
+
+<script>
+  export default {
+    data(){
+      return {
+        items: [
+          { path: "/", title: 'Home'},
+          { path: "/comparator", title: 'Comparator'},
+          { path: "/monster", title: 'Monster'},
+        ]
+      }
+    }
+  }
+</script>
 
 <style>
 #app {

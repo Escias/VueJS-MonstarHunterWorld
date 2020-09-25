@@ -7,9 +7,14 @@
     "build": "vue-cli-service build"
   },
   "dependencies": {
+    "axios": "^0.20.0",
     "core-js": "^3.6.5",
+    "v-autocomplete": "^1.8.2",
     "vue": "^2.6.11",
+    "vue-axios": "^2.1.5",
+    "vue-cool-select": "^3.5.2",
     "vue-router": "^3.2.0",
+    "vue-search-select": "^2.9.3",
     "vuex": "^3.4.0"
   },
   "devDependencies": {
