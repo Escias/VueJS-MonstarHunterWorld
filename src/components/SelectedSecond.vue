@@ -1,43 +1,48 @@
 <template>
     <div class="content second" v-if="valueSecondMonster !== -1">
-      <p>
-        Name : {{ selectedSecondMonster.name }}<br/>
-        Species : {{ selectedSecondMonster.species }}<br/>
-        Type : {{ selectedSecondMonster.type }}<br/>
-        Description :{{ selectedSecondMonster.description }}
-      </p>
-
-      <p>
-        Elements:<br/>
-      </p>
-      <div v-for="{ item, index } in selectedSecondMonster.elements" :key="index" :item="item" :index="index">
-          {{ selectedSecondMonster.elements }}
+      <div class="border" v-if="valueSecondMonster != null">
+          Name : {{ selectedSecondMonster.name }}<br/>
+          Species : {{ selectedSecondMonster.species }}<br/>
+          Type : {{ selectedSecondMonster.type }}<br/>
+          Description :{{ selectedSecondMonster.description }}
       </div>
 
-      <p>
-        Ailments:<br/>
-      </p>
-      <div v-for="{id, name, description} in selectedSecondMonster.ailments" :key="id" :name="name" :description="description">
-        {{ name }}<br/>
-        {{ description }}
+      <div class="border">
+        <div v-for="{ item, index } in selectedSecondMonster.elements" :key="index" :item="item" :index="index">
+            {{ selectedSecondMonster.elements }}
+        </div>
       </div>
 
-      <p>
-        Locations:<br/>
-      </p>
-      <div v-for="{id, name, zoneCount} in selectedSecondMonster.locations" :key="id" :name="name" :zoneCount="zoneCount">
-        <p>
+      <div class="border">
+        <div v-for="{id, name, description} in selectedSecondMonster.ailments" :key="id" :name="name" :description="description">
+          {{ name }}<br/>
+          {{ description }}
+        </div>
+      </div>
+
+      <div class="border">
+        <div v-for="{id, name, zoneCount} in selectedSecondMonster.locations" :key="id" :name="name" :zoneCount="zoneCount">
           {{ name }}
-        </p>
+        </div>
       </div>
-      <p>
-        <br/>
-        Resistances: {{ selectedSecondMonster.resistances }}<br/>
-        <br/>
-        Weaknesses: {{ selectedSecondMonster.weaknesses }}<br/>
-        <br/>
-        Rewards: {{ selectedSecondMonster.rewards }}<br/>
-      </p>
+
+      <div class="border">
+        <div v-for="{ element, condition} in selectedSecondMonster.resistances"  :key="element" :condition="condition">
+            {{ element }} {{ condition }}
+        </div>
+      </div>
+
+      <div class="border">
+        <div v-for="{ element, stars, condition} in selectedSecondMonster.weaknesses"  :key="element" :stars="stars" :condition="condition">
+          {{ element }} : {{ stars }} ★ {{ condition }}
+        </div>
+      </div>
+
+      <div class="border">
+        <div v-for="{ id } in selectedSecondMonster.rewards" :key="id">
+          {{ id }}
+        </div>
+      </div>
     </div>
     <div class="content second" v-else>
       {{ valueSecondMonster }} <br/>
@@ -48,10 +53,10 @@
 <script>
 export default {
     props: {
-      valueSecondMonster: Number,
+      valueSecondMonster: -1,
     },
     computed: {
-        selectedSecondMonster(){
+        selectedSecondMonster() {
           return this.$store.state.selectedSecondMonster
         },
         monsters() {
@@ -63,3 +68,13 @@ export default {
      
 
 </script>
+
+<style>
+  .border {
+    border-style: groove;
+  }
+
+  .border:empty {
+    display: none;
+  }
+</style>
