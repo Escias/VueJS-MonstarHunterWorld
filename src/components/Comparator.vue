@@ -7,14 +7,7 @@
             <option v-for="(value, index) in monsters" :value="index" :key="index"> {{ value.name }} </option>
         </select><br/>
         <div class="comparator">
-            <div class="content first">
-                <p>
-                    {{ selectedFirstMonster.name }}<br/>
-                    {{ selectedFirstMonster.species }}<br/>
-                    {{ selectedFirstMonster.type }}<br/>
-                    {{ selectedFirstMonster.description }}<br/>
-                </p>
-            </div>
+            <SelectedFirst/>
             <div class="column">
                 <p>
                     Name<br/>
@@ -23,20 +16,19 @@
                     Desciption<br/>
                 </p>
             </div>
-            <div class="content second">
-                <p>
-                    {{ selectedSecondMonster.name }}<br/>
-                    {{ selectedSecondMonster.species }}<br/>
-                    {{ selectedSecondMonster.type }}<br/>
-                    {{ selectedSecondMonster.description }}<br/>
-                </p>
-            </div>
+            <SelectedSecond/>
 
         </div>
     </div>
 </template>
 <script>
+import SelectedFirst from '@/components/SelectedFirst.vue'
+import SelectedSecond from '@/components/SelectedSecond.vue'
     export default {
+        components:{
+            SelectedFirst: SelectedFirst,
+            SelectedSecond: SelectedSecond,
+        },
 
         data(){
             return {
@@ -47,12 +39,6 @@
         computed: {
             selectedMonster(){
                 return this.$store.state.selectedMonster
-            },
-            selectedFirstMonster(){
-                return this.$store.state.selectedFirstMonster
-            },
-            selectedSecondMonster(){
-                return this.$store.state.selectedSecondMonster
             },
             monsters() {
                 return this.$store.state.monsters;

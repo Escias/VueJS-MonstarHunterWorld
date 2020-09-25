@@ -1,68 +1,43 @@
 <template>
     <div>
         <select @change="select" v-model="valueMonster">
-            <option selected="All Monsters">All monsters</option>
-            <option v-for="(value, index) in monsters" :value="index" :key="index"> {{ value.name }} </option>
+            <option value="0">Select a monster</option>
+            <option v-for="(value, index) in monsters" :value="index+1" :key="index"> {{ value.name }} </option>
         </select><br/>
-        <div class="case">
-            <form @click="handleClick($event)">
-                <div class="check">
-                    <div class="checkbox"><p>Type</p><input type="checkbox" name="type"/></div>
-                    <div class="checkbox"><p>Species</p><input type="checkbox" name="species"/></div>
-                    <div class="checkbox"><p>Elements</p><input type="checkbox" name="elements"/></div>
-                </div>
-                <div class="check">
-                    <div class="checkbox"><p>Ailments</p><input type="checkbox" name="ailments"/></div>
-                    <div class="checkbox"><p>Locations</p><input type="checkbox" name="locations"/></div>
-                    <div class="checkbox"><p>Resistances</p><input type="checkbox" name="resistances"/></div>
-                </div>
-                <div class="check">
-                    <div class="checkbox"><p>Weaknesses</p><input type="checkbox" name="weaknesses"/></div>
-                    <div class="checkbox"><p>Rewards</p><input type="checkbox" name="rewards"/></div>
-                </div>
-            </form>
+        <div class="filter">
+            <p>Select data to display</p>
+            <select v-model="specMonster">
+                <option v-for="(item) in sMonster" :value="item">{{ item }}</option>
+            </select>
         </div>
-        <p>{{ selectMonster }}</p>
-        <div>
-        <select @change="select" v-model="valueMonster">
-            <option selected="All Monsters">All monsters</option>
-            <option v-for="(value, index) in monsters" :value="index" :key="index"> {{ value.name }} </option>
-        </select><br/>
-        <div class="case">
-            <form @click="handleclick($event)">
-                <div class="check">
-                    <div class="checkbox"><p>Type</p><input type="checkbox" name="type"/></div>
-                    <div class="checkbox"><p>Species</p><input type="checkbox" name="species"/></div>
-                    <div class="checkbox"><p>Elements</p><input type="checkbox" name="elements"/></div>
-                </div>
-                <div class="check">
-                    <div class="checkbox"><p>Ailments</p><input type="checkbox" name="ailments"/></div>
-                    <div class="checkbox"><p>Locations</p><input type="checkbox" name="locations"/></div>
-                    <div class="checkbox"><p>Resistances</p><input type="checkbox" name="resistances"/></div>
-                </div>
-                <div class="check">
-                    <div class="checkbox"><p>Weaknesses</p><input type="checkbox" name="weaknesses"/></div>
-                    <div class="checkbox"><p>Rewards</p><input type="checkbox" name="rewards"/></div>
-                </div>
-            </form>
-        </div>
-        <p>{{ selectMonster }}</p>
-        
+        <button @click="handleClick">Display Data</button>
+        <p class="case">{{ displayFilter }}</p>
     </div>
-    </div>
-    
 </template>
 
 <script>
-
     export default {
         data(){
             return {
-                valueMonster: ''
+                valueMonster: 0,
+                specMonster: 'all',
+                displayFilter: String,
+                sMonster: {
+                    all: 'all',
+                    type: 'type',
+                    species: 'species',
+                    description: 'description',
+                    elements: 'elements',
+                    ailments: 'ailments',
+                    locations: 'location',
+                    resistances: 'resistances',
+                    weaknesses: 'weaknesses',
+                    rewards: 'rewards'
+                }
             }
         },
         computed: {
-            selectMonster(){
+            selectedMonster(){
                 return this.$store.state.selectedMonster
             },
             monsters() {
@@ -74,14 +49,31 @@
         },
         methods: {
             select(){
-                this.$store.dispatch('selectedMonsters', this.valueMonster+1);
+                this.$store.dispatch('selectedMonsters', this.valueMonster);
             },
-            handleClick(e){
-                console.log(e.target.name);
-                console.log(e.target.checked);
-
-            },
-        
+            handleClick(){
+                if (this.specMonster === 'all') {
+                    this.displayFilter = this.$store.state.selectedMonster
+                }else if (this.specMonster === 'type'){
+                    this.displayFilter = this.$store.state.selectedMonster.type
+                }else if (this.specMonster === 'species'){
+                    this.displayFilter = this.$store.state.selectedMonster.species
+                }else if (this.specMonster === 'description'){
+                    this.displayFilter = this.$store.state.selectedMonster.description
+                }else if (this.specMonster === 'elements'){
+                    this.displayFilter = this.$store.state.selectedMonster.elements
+                }else if (this.specMonster === 'ailments'){
+                    this.displayFilter = this.$store.state.selectedMonster.ailments
+                }else if (this.specMonster === 'location'){
+                    this.displayFilter = this.$store.state.selectedMonster.location
+                }else if (this.specMonster === 'resistances'){
+                    this.displayFilter = this.$store.state.selectedMonster.resistances
+                }else if (this.specMonster === 'weaknesses'){
+                    this.displayFilter = this.$store.state.selectedMonster.weaknesses
+                }else if (this.specMonster === 'rewards'){
+                    this.displayFilter = this.$store.state.selectedMonster.rewards
+                }
+            }
         }
     }
 </script>
@@ -94,18 +86,11 @@
         margin-top: 1%;
         background-color: lightgrey;
     }
-
-    .check{
-        display: flex;
-        justify-content: space-evenly;
-        align-items: center;
-    }
-
-    .checkbox{
+    .filter{
         display: flex;
         align-items: center;
+        justify-content: center;
     }
-
     span{
         margin-left: 5%;
         margin-right: 5%;
