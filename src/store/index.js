@@ -1,8 +1,12 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from 'axios'
+import { CoolSelectPlugin } from 'vue-cool-select'
+import 'vue-cool-select/dist/themes/bootstrap.css'
+import 'vue-cool-select/dist/themes/material-design.css'
 
 Vue.use(Vuex)
+Vue.use(CoolSelectPlugin)
 
 export default new Vuex.Store({
   state: {
