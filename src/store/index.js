@@ -33,6 +33,13 @@ export default new Vuex.Store({
         throw new Error(`API ${error}`);
       });
     },
+    selectedMonsters({commit}, id) {
+      axios.get('https://mhw-db.com/monsters/'+id).then(result => {
+        commit('SAVE_SELECT_MONSTER', result.data);
+      }).catch(error => {
+        throw new Error(`API ${error}`);
+      });
+    },
     selectedFirstMonster({commit}, id) {
       axios.get('https://mhw-db.com/monsters/'+id).then(result => {
         commit('SAVE_FIRST_MONSTER', result.data);

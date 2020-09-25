@@ -1,23 +1,32 @@
 <template>
     <div class="content first">
-        
-                <p>
-                    {{ selectedFirstMonster.name }}<br/>
-                    {{ selectedFirstMonster.species }}<br/>
-                    {{ selectedFirstMonster.type }}<br/>
-                    {{ selectedFirstMonster.description }}<br/>
-                    {{ selectedFirstMonster.element }}<br/>
-                </p>
+        <p>
+            Name : {{ selectedFirstMonster.name }}<br/>
+            <br/>
+            Species : {{ selectedFirstMonster.species }}<br/>
+            <br/>
+            Type : {{ selectedFirstMonster.type }}<br/>
+            <br/>
+            Description :{{ selectedFirstMonster.description }}<br/>
+            <br/>
+            Elements : {{ selectedFirstMonster.elements }}<br/>
+            <br/>
+            Ailments: {{ selectedFirstMonster.ailments }}<br/>
+            <br/>
+            Locations: {{ selectedFirstMonster.locations }}<br/>
+            <br/>
+            Resistances: {{ selectedFirstMonster.resistances }}<br/>
+            <br/>
+            Weaknesses: {{ selectedFirstMonster.weaknesses }}<br/>
+            <br/>
+            Rewards: {{ selectedFirstMonster.rewards }}<br/>
+        </p>
     </div>
 </template>
 
 <script>
-import ElementData from '@/components/ElementData.vue'
-export default {
-    components:{
-        ElementData: ElementData,
-    },
-    data(){
+    export default {
+        data(){
             return {
                 valueFirstMonster: Number,
             }
@@ -30,7 +39,10 @@ export default {
                 return this.$store.state.monsters;
             },
         },
-     
-    }
 
+    }
 </script>
+
+<style scoped>
+
+</style>
