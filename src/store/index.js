@@ -42,6 +42,7 @@ export default new Vuex.Store({
     },
     selectedSecondMonster({commit}, id) {
       axios.get('https://mhw-db.com/monsters/'+id).then(result => {
+        console.log("Test before commit ", result.data)
         commit('SAVE_SECOND_MONSTER', result.data);
       }).catch(error => {
         throw new Error(`API ${error}`);

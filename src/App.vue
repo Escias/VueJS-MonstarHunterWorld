@@ -13,18 +13,18 @@
 </template>
 
 <script>
-
-export default {
-  data(){
-    return {
-      items: [
-        { path: "/", title: 'Home'},
-        { path: "/about", title: 'About'},
-        { path: "/monster", title: 'Monster'},
-      ],
+  export default {
+    data(){
+      return {
+        items: [
+          { path: "/", title: 'Home'},
+          { path: "/comparator", title: 'Comparator'},
+          { path: "/monster", title: 'Monster'},
+        ]
+      }
     }
   }
-}
+
 </script>
 
 <style>
