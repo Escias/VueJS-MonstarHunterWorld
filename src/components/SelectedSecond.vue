@@ -1,10 +1,10 @@
 <template>
     <div class="content second" v-if="valueSecondMonster !== -1">
       <div class="border">
-          Name : {{ selectedSecondMonster.name }}<br/>
-          Species : {{ selectedSecondMonster.species }}<br/>
-          Type : {{ selectedSecondMonster.type }}<br/>
-          Description :{{ selectedSecondMonster.description }}
+          {{ selectedSecondMonster.name }}<br/>
+          {{ selectedSecondMonster.species }}<br/>
+          {{ selectedSecondMonster.type }}<br/>
+          {{ selectedSecondMonster.description }}
       </div>
 
       <div class="border">
