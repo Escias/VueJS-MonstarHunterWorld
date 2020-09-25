@@ -2,7 +2,7 @@
     <div>
         <select @change="select" v-model="valueMonster">
             <option value="0">Select a monster</option>
-            <option v-for="(value, index) in monsters" :value="index+1" :key="index"> {{ value.name }} </option>
+            <option v-for="(value, index) in monsters" :value="value.id" :key="index"> {{ value.name }} </option>
         </select><br/>
         <div class="filter">
             <p>Select data to display</p>
@@ -12,6 +12,7 @@
         </div>
         <button @click="handleClick">Display Data</button>
         <p class="case">{{ displayFilter }}</p>
+        <!--<p v-for="(item) in displayFilter">{{ item }}</p>-->
     </div>
 </template>
 
@@ -54,24 +55,27 @@
             handleClick(){
                 if (this.specMonster === 'all') {
                     this.displayFilter = this.$store.state.selectedMonster
-                }else if (this.specMonster === 'type'){
-                    this.displayFilter = this.$store.state.selectedMonster.type
-                }else if (this.specMonster === 'species'){
-                    this.displayFilter = this.$store.state.selectedMonster.species
-                }else if (this.specMonster === 'description'){
-                    this.displayFilter = this.$store.state.selectedMonster.description
-                }else if (this.specMonster === 'elements'){
-                    this.displayFilter = this.$store.state.selectedMonster.elements
-                }else if (this.specMonster === 'ailments'){
-                    this.displayFilter = this.$store.state.selectedMonster.ailments
-                }else if (this.specMonster === 'location'){
-                    this.displayFilter = this.$store.state.selectedMonster.location
-                }else if (this.specMonster === 'resistances'){
-                    this.displayFilter = this.$store.state.selectedMonster.resistances
-                }else if (this.specMonster === 'weaknesses'){
-                    this.displayFilter = this.$store.state.selectedMonster.weaknesses
-                }else if (this.specMonster === 'rewards'){
-                    this.displayFilter = this.$store.state.selectedMonster.rewards
+                }else{
+                    if (this.specMonster === 'type'){
+                        this.displayFilter = this.$store.state.selectedMonster.type
+                    }else if (this.specMonster === 'species'){
+                        this.displayFilter = this.$store.state.selectedMonster.species
+                    }else if (this.specMonster === 'description'){
+                        this.displayFilter = this.$store.state.selectedMonster.description
+                    }else if (this.specMonster === 'elements'){
+                        this.displayFilter = this.$store.state.selectedMonster.elements
+                    }else if (this.specMonster === 'ailments'){
+                        this.displayFilter = this.$store.state.selectedMonster.ailments
+                    }else if (this.specMonster === 'location'){
+                        this.displayFilter = this.$store.state.selectedMonster.location
+                    }else if (this.specMonster === 'resistances'){
+                        this.displayFilter = this.$store.state.selectedMonster.resistances
+                    }else if (this.specMonster === 'weaknesses'){
+                        this.displayFilter = this.$store.state.selectedMonster.weaknesses
+                    }else if (this.specMonster === 'rewards'){
+                        this.displayFilter = this.$store.state.selectedMonster.rewards
+                    }
+                    //this.displayFilter =  this.displayFilter.join('')
                 }
             }
         }

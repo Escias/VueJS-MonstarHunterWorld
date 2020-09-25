@@ -1,43 +1,31 @@
+
 <template>
     <div>
         <select @change="selectFirst" v-model="valueFirstMonster">
-            <option v-for="(value, index) in monsters" :value="index" :key="index"> {{ value.name }} </option>
+            <option v-for="(value, index) in monsters" :value="value.id" :key="index"> {{ value.name }} </option>
         </select>
         <select @change="selectSecond" v-model="valueSecondMonster">
-            <option v-for="(value, index) in monsters" :value="index" :key="index"> {{ value.name }} </option>
+            <option v-for="(value, index) in monsters" :value="value.id" :key="index"> {{ value.name }} </option>
         </select><br/>
         <div class="comparator">
-            <div class="content first">
-                <p>
-                    {{ selectedFirstMonster.name }}<br/>
-                    {{ selectedFirstMonster.species }}<br/>
-                    {{ selectedFirstMonster.type }}<br/>
-                    {{ selectedFirstMonster.description }}<br/>
-                </p>
-            </div>
+            <SelectedFirst/>
             <div class="column">
                 <p>
-                    Name<br/>
-                    Species<br/>
-                    Type<br/>
-                    Desciption<br/>
+                    <br/>
                 </p>
             </div>
-            <div class="content second">
-                <p>
-                    {{ selectedSecondMonster.name }}<br/>
-                    {{ selectedSecondMonster.species }}<br/>
-                    {{ selectedSecondMonster.type }}<br/>
-                    {{ selectedSecondMonster.description }}<br/>
-                </p>
-            </div>
-
+            <SelectedSecond/>
         </div>
     </div>
 </template>
 <script>
+    import SelectedFirst from "./SelectedFirst";
+    import SelectedSecond from "./SelectedSecond";
     export default {
-
+        components:{
+            SelectedFirst: SelectedFirst,
+            SelectedSecond: SelectedSecond,
+        },
         data(){
             return {
                 valueFirstMonster: Number,
@@ -48,12 +36,6 @@
             selectedMonster(){
                 return this.$store.state.selectedMonster
             },
-            selectedFirstMonster(){
-                return this.$store.state.selectedFirstMonster
-            },
-            selectedSecondMonster(){
-                return this.$store.state.selectedSecondMonster
-            },
             monsters() {
                 return this.$store.state.monsters;
             },
@@ -63,20 +45,41 @@
         },
         methods: {
             selectFirst(){
-                this.$store.dispatch('selectedFirstMonster', this.valueFirstMonster + 1);
+                this.$store.dispatch('selectedFirstMonster', this.valueFirstMonster);
                 console.log("sel 1 : " + this.valueFirstMonster)
                 console.log("sel 2 : " + this.valueSecondMonster)
             },
             selectSecond(){
-                this.$store.dispatch('selectedSecondMonster', this.valueSecondMonster + 1);
+                this.$store.dispatch('selectedSecondMonster', this.valueSecondMonster);
                 console.log("sel 1 : " + this.valueFirstMonster)
                 console.log("sel 2 : " + this.valueSecondMonster)
             }
         }
     }
 </script>
-
+changeFCss(){
+this.typeFirst = this.$store.state.selectedFirstMonster.type;
+this.typeSecond = this.$store.state.selectedSecondMonster.type;
+console.log(this.$store.state.selectedFirstMonster.type)
+console.log(this.$store.state.selectedSecondMonster.type)
+if (this.typeFirst === this.typeSecond){
+this.colorFirst = 'black'
+this.colorSecond = 'black'
+}else if (this.typeFirst === 'small' && this.typeSecond === 'large'){
+this.colorFirst = 'green'
+this.colorSecond = 'red'
+}else if (this.typeFirst === 'large' && this.typeSecond === 'small'){
+this.colorFirst = 'red'
+this.colorSecond = 'green'
+}
+},
 <style scoped>
+    .fcolor{
+        color: black;
+    }
+    .scolor{
+        color: black;
+    }
     div.comparator {
         border-style: solid;
         border-width: 3px;
@@ -84,8 +87,6 @@
         align-content: space-between;
     }
     div.comparator div.content {
-        /*width: 45%;
-        min-width: 40%;*/
         min-height: 100px;
         border-style: dashed;
         flex: 1;
@@ -99,23 +100,6 @@
     }
     div.second {
         background-color: rgb(219, 104, 104);
-    }
-    .case{
-        border: black solid;
-        margin-left: 20%;
-        margin-right: 20%;
-        margin-top: 1%;
-        background-color: lightgrey;
-    }
-    .check{
-        display: flex;
-        justify-content: space-evenly;
-        align-items: center;
-
-    }
-    .checkbox{
-        display: flex;
-        align-items: center;
     }
     span{
         margin-left: 5%;
