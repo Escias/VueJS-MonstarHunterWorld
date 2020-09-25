@@ -1,6 +1,6 @@
 <template>
     <div class="content second" v-if="valueSecondMonster !== -1">
-      <div class="border" v-if="valueSecondMonster != null">
+      <div class="border">
           Name : {{ selectedSecondMonster.name }}<br/>
           Species : {{ selectedSecondMonster.species }}<br/>
           Type : {{ selectedSecondMonster.type }}<br/>
