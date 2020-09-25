@@ -32,8 +32,8 @@ import SelectedSecond from '@/components/SelectedSecond.vue'
 
         data(){
             return {
-                valueFirstMonster: Number,
-                valueSecondMonster: Number,
+                valueFirstMonster: -1,
+                valueSecondMonster: -1,
             }
         },
         computed: {

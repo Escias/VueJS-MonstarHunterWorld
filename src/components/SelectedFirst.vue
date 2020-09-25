@@ -1,5 +1,5 @@
 <template>
-    <div class="content first">
+    <div class="content first" v-if="valueFirstMonster !== -1">
                 <p>
                   Name : {{ selectedFirstMonster.name }}<br/>
                   Species : {{ selectedFirstMonster.species }}<br/>
@@ -19,23 +19,25 @@
                   Rewards: {{ selectedFirstMonster.rewards }}<br/>
                 </p>
     </div>
+  <div class="content first" v-else>
+    {{ valueFirstMonster }} <br/>
+    N'est pas déclaré.
+  </div>
 </template>
 
 <script>
 export default {
-    data(){
-            return {
-                valueFirstMonster: Number,
-            }
-        },
-        computed: {
-            selectedFirstMonster(){
-                return this.$store.state.selectedFirstMonster
-            },
-            monsters() {
-                return this.$store.state.monsters;
-            },
-        },
+      props: {
+        valueFirstMonster: Number,
+      },
+      computed: {
+          selectedFirstMonster(){
+              return this.$store.state.selectedFirstMonster
+          },
+          monsters() {
+              return this.$store.state.monsters;
+          },
+      }
      
     }
 

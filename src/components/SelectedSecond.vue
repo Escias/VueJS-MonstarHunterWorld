@@ -14,7 +14,7 @@
              <br/>
              Resistances: {{ selectedSecondMonster.resistances }}<br/>
              <br/>
-             Weaknesses: {{ selectedSecondMonster.weaknesses.get(1).element }}<br/>
+             Weaknesses: {{ selectedSecondMonster.weaknesses }}<br/>
              <br/>
              Rewards: {{ selectedSecondMonster.rewards }}<br/>
             </p>
@@ -27,10 +27,8 @@
 
 <script>
 export default {
-       data(){
-            return {           
-                valueSecondMonster: -1,
-            }
+        props: {
+          valueSecondMonster: Number,
         },
         computed: {
             selectedSecondMonster(){
@@ -39,7 +37,7 @@ export default {
             monsters() {
               return this.$store.state.monsters;
             },
-        },
+        }
         
     }
      

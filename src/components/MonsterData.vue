@@ -54,23 +54,23 @@
             handleClick(){
                 if (this.specMonster === 'all') {
                     this.displayFilter = this.$store.state.selectedMonster
-                }else if (this.specMonster === 'type'){
+                } else if (this.specMonster === 'type'){
                     this.displayFilter = this.$store.state.selectedMonster.type
-                }else if (this.specMonster === 'species'){
+                } else if (this.specMonster === 'species'){
                     this.displayFilter = this.$store.state.selectedMonster.species
-                }else if (this.specMonster === 'description'){
+                } else if (this.specMonster === 'description'){
                     this.displayFilter = this.$store.state.selectedMonster.description
-                }else if (this.specMonster === 'elements'){
+                } else if (this.specMonster === 'elements'){
                     this.displayFilter = this.$store.state.selectedMonster.elements
-                }else if (this.specMonster === 'ailments'){
+                } else if (this.specMonster === 'ailments'){
                     this.displayFilter = this.$store.state.selectedMonster.ailments
-                }else if (this.specMonster === 'location'){
+                } else if (this.specMonster === 'location'){
                     this.displayFilter = this.$store.state.selectedMonster.location
-                }else if (this.specMonster === 'resistances'){
+                } else if (this.specMonster === 'resistances'){
                     this.displayFilter = this.$store.state.selectedMonster.resistances
-                }else if (this.specMonster === 'weaknesses'){
+                } else if (this.specMonster === 'weaknesses'){
                     this.displayFilter = this.$store.state.selectedMonster.weaknesses
-                }else if (this.specMonster === 'rewards'){
+                } else if (this.specMonster === 'rewards'){
                     this.displayFilter = this.$store.state.selectedMonster.rewards
                 }
             }
